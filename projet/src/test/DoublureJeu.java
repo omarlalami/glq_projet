@@ -1,6 +1,7 @@
-package chifoumi;
+package test;
+import chifoumi.*;
 
-public class Jeu {
+public class DoublureJeu {
 
 	Joueur monJoueur1;
 	Joueur monJoueur2;
@@ -9,12 +10,11 @@ public class Jeu {
 	private int nbToursMax;
 	
 	private boolean objectif;
-	boolean fini=false;
-
+	
 	private int numeroTourActuel;
 
 	
-	public Jeu(String nom_joueur_1, String nom_joueur_2) {
+	public DoublureJeu(String nom_joueur_1, String nom_joueur_2) {
 		monJoueur1 = new Joueur(nom_joueur_1);
 		monJoueur2 = new Joueur(nom_joueur_2);
 		
@@ -28,7 +28,7 @@ public class Jeu {
 		
 	}
 	
-	public Jeu(String nom1, String nom2,int score_ou_nbTour_Max, boolean score_ou_nbTour ) {
+	public DoublureJeu(String nom1, String nom2,int score_ou_nbTour_Max, boolean score_ou_nbTour ) {
 		
 		this(nom1,nom2);
 		
@@ -49,14 +49,11 @@ public class Jeu {
 	private void jouerLeTour(int n) {
 		
 		
-	   Coup coup_joueur1 = monJoueur1.joue();
-	   Coup coup_joueur2 = monJoueur2.joue();
+	   Coup coup_joueur1 = Coup.FEUILLE;
+	   Coup coup_joueur2 = Coup.CISEAUX;
 	   
 	   String operateur="";
 	   
-	   if(coup_joueur1 == Coup.QUITTER || coup_joueur2 == Coup.QUITTER )
-		   fini = true;
-		   
 	   switch (coup_joueur1) {
 	    case PIERRE:
 	        switch (coup_joueur2) {
@@ -124,11 +121,13 @@ public class Jeu {
 	public int [] jouerUnePartie() {
 		 
 		int resultatPartie [] = new int [2];
+		boolean fini=false;
 		
 		while (fini==false) {
 			
 			jouerLeTour(numeroTourActuel);
-			
+
+
 			if( objectif == false ) {
 				
 				if (monJoueur1.score()>=scoreMax || monJoueur2.score()>=scoreMax )
@@ -150,19 +149,20 @@ public class Jeu {
 					fini=true;
 				}
 			}
-				
+					
+
+
+			
+			
+			resultatPartie[0]=monJoueur1.score();
+			resultatPartie[1]=monJoueur2.score();
 			
 		}
 		
-		resultatPartie[0]=monJoueur1.score();
-		resultatPartie[1]=monJoueur2.score();
-		
 		if(resultatPartie[0]>resultatPartie[1])
 			donnerLeGagnant(monJoueur1);
-		else if (resultatPartie[0]<resultatPartie[1])
-			donnerLeGagnant(monJoueur2);
 		else
-			System.out.println("Il n'ya pas de gagnant !");
+			donnerLeGagnant(monJoueur2);
 
 		return resultatPartie;
 
@@ -171,7 +171,7 @@ public class Jeu {
 	
 	public void donnerLeGagnant(Joueur joueur)
 	{
-		System.out.println(joueur.nom() + " remporte cette partie !");
+		System.out.println(joueur.nom() + " remporte cette partie");
 	}
 	
 }

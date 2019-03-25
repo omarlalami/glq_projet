@@ -19,11 +19,21 @@ public class IHMChoix extends JOptionPane {
 	
 	JDialog dialogue;
 	
-	Coup[] choix = {Coup.PIERRE, Coup.FEUILLE, Coup.CISEAUX};
+	Coup[] choix = {Coup.PIERRE, Coup.FEUILLE, Coup.CISEAUX,Coup.QUITTER};
 	
 	public IHMChoix(String nom) {
 		setMessage("joue : " );
 		setOptions(choix);
+		
+/*	    JButton bouton1 = new JButton("quitter");
+	    bouton1.addActionListener( new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.exit(0);
+	    	}
+	    }
+	    );
+		add(bouton1);
+	*/	
 		dialogue = createDialog(null, nom);
 	}
 
@@ -39,7 +49,7 @@ public class IHMChoix extends JOptionPane {
 	    JPanel pannel = new JPanel();
 
 	    JButton bouton1  =new JButton("OK");
-	    bouton1 .addActionListener( new ActionListener() {
+	    bouton1.addActionListener( new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.exit(0);
 	    	}
