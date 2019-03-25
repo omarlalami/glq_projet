@@ -24,4 +24,15 @@ public class IHMChoix extends JOptionPane {
 		return  (Coup) getValue();
 	}
 	
+	public IHMOrdinateur(String nom) {
+		setMessage(nom + " joue " );
+		setOptions(choix);
+		dialogue = createDialog(null, "Message");
+	}
+	
+	
+	void coupOrdinateur(Coup c) {
+		
+	}
+	
 }
