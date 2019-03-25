@@ -18,11 +18,11 @@ public class Jeu {
 		monJoueur2 = new Joueur(nom_joueur_2);
 		
 		if(nom_joueur_2==null) {
-			monJoueur2.setNom("Joueur 2");
+			monJoueur2.setNom("Joueur_2");
 		}
 		
 		if(nom_joueur_1==null) {
-			monJoueur1.setNom("Joueur 1");
+			monJoueur1.setNom("Joueur_1");
 		}
 		
 	}
@@ -133,12 +133,10 @@ public class Jeu {
 				{
 					if (monJoueur1.score()>=scoreMax)
 					{
-						DonnerLeGagnant(monJoueur1);
 						fini=true;
 					}
 					else 
 					{
-						DonnerLeGagnant(monJoueur2);
 						fini=true;	
 					}
 						
@@ -160,13 +158,17 @@ public class Jeu {
 			
 		}
 		
+		if(resultatPartie[0]>resultatPartie[1])
+			donnerLeGagnant(monJoueur1);
+		else
+			donnerLeGagnant(monJoueur2);
 
 		return resultatPartie;
 
 	 }
 	
 	
-	public void DonnerLeGagnant(Joueur joueur)
+	public void donnerLeGagnant(Joueur joueur)
 	{
 		System.out.println(joueur.nom() + " remporte cette partie");
 	}

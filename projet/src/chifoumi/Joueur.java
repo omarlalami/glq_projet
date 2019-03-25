@@ -12,14 +12,13 @@ public class Joueur {
 	public Joueur(String nom) {
 		if(nom==null) {
 			estUnHumain=false;
-			fenetreChoix = new IHMOrdinateur(nom());
 		}	
 		else {
 			this.nom=nom;
 			estUnHumain=true;
-			fenetreChoix = new IHMChoix(nom());
 		}
 		this.score=0;
+		fenetreChoix = new IHMChoix(nom());
 	}
 	
 	public void setNom(String nom) {
