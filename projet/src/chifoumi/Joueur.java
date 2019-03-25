@@ -5,9 +5,9 @@ public class Joueur {
 	private String nom;
 	private int score;
 	
-	// TODO
 	public Joueur(String nom) {
-		
+		this.nom=nom;
+		this.score=0;
 	}
 	
 	// TODO
@@ -24,10 +24,12 @@ public class Joueur {
 		return score;
 	}
 	
-	// TODO
 	public String toString() {
 		
-		return null;
+		return " " + nom() + " = " + score() +" " ;
+		
+	
 	}
+
 	
 }
