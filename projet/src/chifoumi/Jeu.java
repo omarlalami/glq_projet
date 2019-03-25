@@ -8,6 +8,8 @@ public class Jeu {
 	private int scoreMax;
 	private int nbToursMax;
 	private boolean objectif;
+	
+	private int numeroTourActuel;
 
 	
 	public Jeu(String nom_joueur_1, String nom_joueur_2) {
